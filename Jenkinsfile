@@ -12,7 +12,7 @@ node('built-in')
 	stage('Continuous Deployment') 
 	{
     	
-        sh ' scp  /home/ubuntu/.jenkins/workspace/Pipe/webapp/target/webapp.war   ubuntu@172.31.32.199:/var/lib/tomcat9/webapps/qaenv.war'
+        sh ' scp  /home/ubuntu/.jenkins/workspace/Pipe/webapp/target/webapp.war   ubuntu@172.31.32.199:/var/lib/tomcat9/webapps/rio.war'
 
 	}
 	stage('Continuous Testing') 
@@ -24,7 +24,7 @@ node('built-in')
     stage('Continuous Delivery') 
 	{
     	
-sh ' scp  /home/ubuntu/.jenkins/workspace/Pipe/webapp/target/webapp.war   ubuntu@172.31.45.237:/var/lib/tomcat9/webapps/prodenv.war'
+sh ' scp  /home/ubuntu/.jenkins/workspace/Pipe/webapp/target/webapp.war   ubuntu@172.31.45.237:/var/lib/tomcat9/webapps/rio.war'
 
 	}
 }
