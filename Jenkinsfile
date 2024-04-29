@@ -2,22 +2,29 @@ node('built-in')
 {
     stage('Continuous Download') 
 	{
-    git 'https://github.com/sunildevops77/maven.git'
+    	git 'https://github.com/therahulpatil/Jenkins2.git'
 	}
+
     stage('Continuous Build') 
 	{
-    sh label: '', script: 'mvn package'
+    	sh 'mvn package'
 	}
-    stage('Continuous Deployment') 
+	stage('Continuous Deployment') 
 	{
-sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war   ubuntu@172.31.26.217:/var/lib/tomcat8/webapps/qaenv.war'
+    	
+        sh ' scp  /home/ubuntu/.jenkins/workspace/Pipe/webapp/target/webapp.war   ubuntu@172.31.32.199:/var/lib/tomcat9/webapps/qaenv.war'
+
 	}
-    stage('Continuous Testing') 
+	stage('Continuous Testing') 
 	{
-              sh label: '', script: 'echo "Testing Passed"'
+    	
+	sh 'echo "Testing Passed"'
 	}
+
     stage('Continuous Delivery') 
 	{
-sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war   ubuntu@172.31.22.88:/var/lib/tomcat8/webapps/prodenv.war'
+    	
+sh ' scp  /home/ubuntu/.jenkins/workspace/Pipe/webapp/target/webapp.war   ubuntu@172.31.45.237:/var/lib/tomcat9/webapps/prodenv.war'
+
 	}
 }
